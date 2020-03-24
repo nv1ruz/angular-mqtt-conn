@@ -1,27 +1,6 @@
 <!-- <table>
     <tr>
         <td>Topic: </td>
-        <td><input [(ngModel)]="topicname" type="text" /></td>
-        <td><button type="button" (click)="subscribeNewTopic()">Subscribe Topic</button></td>
-    </tr>
-    <tr>
-        <td>Message: </td>
-        <td><input [(ngModel)]="msg" type="text" /></td>
-        <td><button type="button" (click)="sendmsg()">Send</button></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>&nbsp;&nbsp;<button type="button" (click)="clear()">Clear Log</button></td>
-        <td></td>
-    </tr>
-</table>
-<br /><br />
-<div #msglog></div> -->
-
-
-<table>
-    <tr>
-        <td>Topic: </td>
         <td><input [(ngModel)]="topicName" type="text" /></td>
         <td *ngIf="!subsTopic"><button type="button" (click)="suscribirseAtopic()">Suscribirse</button></td>
         <td *ngIf="subsTopic"><button type="button" (click)="cancelarSuscripcion()">Cancelar suscripcion</button></td>
@@ -31,4 +10,6 @@
         <td><input [(ngModel)]="message" type="text" /></td>
         <td><button type="button" (click)="enviarMensaje()">Enviar</button></td>
     </tr>
-</table>
+</table> -->
+
+<app-inicio></app-inicio>
