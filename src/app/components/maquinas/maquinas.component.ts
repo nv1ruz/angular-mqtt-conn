@@ -72,6 +72,7 @@ export class MaquinasComponent implements OnInit {
     maquina.active = true;
     console.warn( (maquina.name).toUpperCase(), 'INICIADA' );
     this.generarVelociad( maquina );
+    this.publicarMensaje( maquina.topic, 'on' );
   }
 
   public detenerMaquina( maquina: any ): void {
@@ -105,17 +106,22 @@ export class MaquinasComponent implements OnInit {
     this.suscribirseAmaquina( this.maquina2 );
   }
   public suscribirseAmaquina( maquina: any ): void {
+    maquina.active = true;
     maquina.subscription = this._mqttService.suscribirseAtopic( maquina.topic ).subscribe( (mensaje: IMqttMessage) => {
       const DATO = mensaje.payload.toString();
       console.log( '[', maquina.name, ']:', mensaje.payload.toString() );
       maquina.needleValue = DATO;
       maquina.bottomLabel = DATO + ' km/h';
+      if( mensaje.payload.toString() == 'on' ){
+        maquina.needleValue = 0;
+        maquina.bottomLabel = '0 km/h';
+        maquina.active = true;
+      } 
       if( mensaje.payload.toString() == 'off') {
         maquina.needleValue = 0;
         maquina.bottomLabel = '0 km/h';
         maquina.active = false;
-      } else{
-        maquina.active = true;
+        clearInterval( maquina.idInterval );
       }
     });
   }
