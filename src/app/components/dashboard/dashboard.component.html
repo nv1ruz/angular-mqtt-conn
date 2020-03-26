@@ -1,0 +1,64 @@
+<!-- Content Wrapper. Contains page content -->
+<!-- <div class="content-wrapper"> -->
+
+  <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">DASHBOARD</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Parametrización</a></li>
+              <li class="breadcrumb-item active">Máquinas</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.content-header -->
+  
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body" style="text-align: center; margin: 0 auto;">
+                <rg-gauge-chart
+                  [canvasWidth]="maquina1.canvasWidth"
+                  [needleValue]="maquina1.needleValue"
+                  [centralLabel]="maquina1.centralLabel"
+                  [options]="maquina1.options"
+                  [name]="maquina1.name"
+                  [bottomLabel]="maquina1.bottomLabel">
+                </rg-gauge-chart>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body" style="text-align: center; margin: 0 auto;">
+                <rg-gauge-chart
+                  [canvasWidth]="maquina2.canvasWidth"
+                  [needleValue]="maquina2.needleValue"
+                  [centralLabel]="maquina2.centralLabel"
+                  [options]="maquina2.options"
+                  [name]="maquina2.name"
+                  [bottomLabel]="maquina2.bottomLabel">
+                </rg-gauge-chart>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+  <!-- </div> -->

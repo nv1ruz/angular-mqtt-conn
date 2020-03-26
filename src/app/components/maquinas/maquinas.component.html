@@ -1,0 +1,73 @@
+<!-- Content Wrapper. Contains page content -->
+<!-- <div class="content-wrapper"> -->
+
+  <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">PARAMETRIZACIÓN DE MÁQUINAS</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Parametrización</a></li>
+              <li class="breadcrumb-item active">Máquinas</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.content-header -->
+  
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body" style="text-align: center;">
+  
+                <div style="display: inline-block; margin: 10px;">
+                  <label for="maq_1">Topic: 
+                    <input type="text" [value]="maquina1.topic" readonly>
+                    <button *ngIf="!this.maquina1.enable" (click)="suscribirseAmaquina( this.maquina1 )">Suscribirse</button>
+                    <button *ngIf="this.maquina1.enable" (click)="desuscribirseAmaquina( this.maquina1 )">Cancelar</button>
+                  </label>
+                  <rg-gauge-chart
+                    [canvasWidth]="maquina1.canvasWidth"
+                    [needleValue]="maquina1.needleValue"
+                    [centralLabel]="maquina1.centralLabel"
+                    [options]="maquina1.options"
+                    [name]="maquina1.name"
+                    [bottomLabel]="maquina1.bottomLabel">
+                  </rg-gauge-chart>
+                  <button *ngIf="!this.maquina1.active" (click)="iniciarMaquina( this.maquina1 )">Iniciar</button>
+                  <button *ngIf="this.maquina1.active" (click)="detenerMaquina( this.maquina1 )">Detener</button>
+                </div>
+  
+                <div style="display: inline-block; margin: 10px;">
+                  <label for="maq_1">Topic: 
+                    <input type="text" [value]="maquina2.topic" readonly>
+                    <button *ngIf="!this.maquina2.enable" (click)="suscribirseAmaquina( this.maquina2 )">Suscribirse</button>
+                    <button *ngIf="this.maquina2.enable" (click)="desuscribirseAmaquina( this.maquina2 )">Cancelar</button>
+                  </label>
+                  <rg-gauge-chart
+                    [canvasWidth]="maquina2.canvasWidth"
+                    [needleValue]="maquina2.needleValue"
+                    [centralLabel]="maquina2.centralLabel"
+                    [options]="maquina2.options"
+                    [name]="maquina2.name"
+                    [bottomLabel]="maquina2.bottomLabel">
+                  </rg-gauge-chart>
+                  <button *ngIf="!this.maquina2.active" (click)="iniciarMaquina( this.maquina2 )">Iniciar</button>
+                  <button *ngIf="this.maquina2.active" (click)="detenerMaquina( this.maquina2 )">Detener</button>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- </div> -->

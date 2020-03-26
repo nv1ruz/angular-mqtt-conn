@@ -9,21 +9,27 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   path: '/mqtt'
 }
 
-import { MqttAngularService } from './services/mqtt-angular.service';
+import { AppRoutingModule } from './app.routes';
 
+import { MqttAngularService } from './services/mqtt-angular.service';
 
 import { AppComponent } from './app.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { MaquinasComponent } from './components/maquinas/maquinas.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicioComponent
+    InicioComponent,
+    MaquinasComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     GaugeChartModule,
+    AppRoutingModule,
     MqttModule.forRoot(MQTT_SERVICE_OPTIONS)
   ],
   providers: [
