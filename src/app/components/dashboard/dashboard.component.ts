@@ -52,9 +52,7 @@ export class DashboardComponent implements OnInit {
     active: false
   };
 
-  constructor( private _mqttService: MqttAngularService ) {
-    
-  }
+  constructor( private _mqttService: MqttAngularService ) { }
 
   ngOnInit() {
     this.iniciarSuscripciones()

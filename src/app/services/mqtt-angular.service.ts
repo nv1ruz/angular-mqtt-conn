@@ -7,7 +7,9 @@ import { Subscription, Observable } from 'rxjs';
 })
 export class MqttAngularService {
 
-  constructor( private _mqttService: MqttService ) { }
+  constructor( private _mqttService: MqttService ) {
+    
+  }
 
   public suscribirseAtopic( topic: any ): Observable<IMqttMessage> {
     console.warn('Suscripto a topic: ', topic);
@@ -25,5 +27,10 @@ export class MqttAngularService {
     this._mqttService.unsafePublish( topic, mensaje, { qos: 1, retain: true });
     console.warn('[PUBLISH]',topic, ':', mensaje);
   }
+
+
+
+
+
 
 }

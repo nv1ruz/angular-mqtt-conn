@@ -57,9 +57,10 @@ export class MaquinasComponent implements OnInit {
 
 
 
-  constructor(  private _mqttService: MqttAngularService ) { }
+  constructor(  public _mqttService: MqttAngularService ) { }
 
   ngOnInit() {
+    this.iniciarSuscripciones();
   }
 
   ngOnDestroy(): void {
@@ -99,8 +100,11 @@ export class MaquinasComponent implements OnInit {
     this._mqttService.enviarMensajeAtopic( topic, mensaje );
   }
 
+  private iniciarSuscripciones(): void {
+    this.suscribirseAmaquina( this.maquina1 );
+    this.suscribirseAmaquina( this.maquina2 );
+  }
   public suscribirseAmaquina( maquina: any ): void {
-    maquina.enable = true;    
     maquina.subscription = this._mqttService.suscribirseAtopic( maquina.topic ).subscribe( (mensaje: IMqttMessage) => {
       const DATO = mensaje.payload.toString();
       console.log( '[', maquina.name, ']:', mensaje.payload.toString() );
@@ -109,6 +113,9 @@ export class MaquinasComponent implements OnInit {
       if( mensaje.payload.toString() == 'off') {
         maquina.needleValue = 0;
         maquina.bottomLabel = '0 km/h';
+        maquina.active = false;
+      } else{
+        maquina.active = true;
       }
     });
   }

@@ -30,8 +30,8 @@
                 <div style="display: inline-block; margin: 10px;">
                   <label for="maq_1">Topic: 
                     <input type="text" [value]="maquina1.topic" readonly>
-                    <button *ngIf="!this.maquina1.enable" (click)="suscribirseAmaquina( this.maquina1 )">Suscribirse</button>
-                    <button *ngIf="this.maquina1.enable" (click)="desuscribirseAmaquina( this.maquina1 )">Cancelar</button>
+                    <!-- <button *ngIf="!this.maquina1.enable" (click)="suscribirseAmaquina( this.maquina1 )">Suscribirse</button> -->
+                    <!-- <button *ngIf="this.maquina1.enable" (click)="desuscribirseAmaquina( this.maquina1 )">Cancelar</button> -->
                   </label>
                   <rg-gauge-chart
                     [canvasWidth]="maquina1.canvasWidth"
@@ -48,8 +48,8 @@
                 <div style="display: inline-block; margin: 10px;">
                   <label for="maq_1">Topic: 
                     <input type="text" [value]="maquina2.topic" readonly>
-                    <button *ngIf="!this.maquina2.enable" (click)="suscribirseAmaquina( this.maquina2 )">Suscribirse</button>
-                    <button *ngIf="this.maquina2.enable" (click)="desuscribirseAmaquina( this.maquina2 )">Cancelar</button>
+                    <!-- <button *ngIf="!this.maquina2.enable" (click)="suscribirseAmaquina( this.maquina2 )">Suscribirse</button> -->
+                    <!-- <button *ngIf="this.maquina2.enable" (click)="desuscribirseAmaquina( this.maquina2 )">Cancelar</button> -->
                   </label>
                   <rg-gauge-chart
                     [canvasWidth]="maquina2.canvasWidth"
