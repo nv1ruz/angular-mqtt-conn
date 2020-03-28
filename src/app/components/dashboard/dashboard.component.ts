@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IMqttMessage } from 'ngx-mqtt';
 import { MqttAngularService } from 'src/app/services/mqtt-angular.service';
+import { ApiEstradaService } from 'src/app/services/api-estrada.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -52,10 +54,14 @@ export class DashboardComponent implements OnInit {
     active: false
   };
 
-  constructor( private _mqttService: MqttAngularService ) { }
+  public maquinas: any;
+
+
+  constructor( private _mqttService: MqttAngularService, private _apiEstradaService: ApiEstradaService ) { }
 
   ngOnInit() {
-    this.iniciarSuscripciones()
+    this.iniciarSuscripciones();
+    this.obtenerMaquinas();
   }
 
   ngOnDestroy(): void {
@@ -78,6 +84,33 @@ export class DashboardComponent implements OnInit {
         maquina.bottomLabel = '0 km/h';
       }
     });
+  }
+
+  public obtenerMaquinas(){
+    const subs = this._apiEstradaService.obtenerMaquinas().subscribe( (data:any[]) => {
+      this.maquinas = data;
+      console.log(data);
+      if(subs) subs.unsubscribe();
+    });
+  }
+
+  public eliminarMaquina( id: number ) {
+    this._apiEstradaService.eliminarMaquina( id );
+    setTimeout(() => {
+      this.obtenerMaquinas();
+    }, 300);
+  }
+
+  public crearMaquina() {
+    const maq = {
+      nomb: 'maquina_12',
+      velo: 12
+    }
+
+    this._apiEstradaService.crearMaquina( maq );
+    setTimeout(() => {
+      this.obtenerMaquinas();
+    }, 300);
   }
 
 }

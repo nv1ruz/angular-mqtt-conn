@@ -35,6 +35,7 @@
                   [name]="maquina1.name"
                   [bottomLabel]="maquina1.bottomLabel">
                 </rg-gauge-chart>
+                <button (click)="crearMaquina()">crear</button>
               </div>
             </div>
           </div>
@@ -54,6 +55,15 @@
               </div>
             </div>
           </div>
+
+          <div class="col-lg-12">
+            <div class="card" *ngFor="let maquina of maquinas">
+              <p>{{ maquina.nomb }}</p>
+              <p>{{ maquina.velo }}</p>
+              <button (click)="eliminarMaquina( maquina.id )">Eliminar</button>
+            </div>
+          </div>
+
 
 
 
